@@ -1,10 +1,10 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #A5DD9B;
     margin: 0;
     padding: 0;
 }
-
 .container {
     max-width: 50%;
     height: 50%;
@@ -37,7 +37,6 @@ select, button {
     border-radius: 5px;
     transition: all 0.3s ease;
 }
-
 select:focus, button:focus {
     outline: none;
     border-color: #F6F193;
