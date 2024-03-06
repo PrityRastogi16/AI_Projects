@@ -21,21 +21,44 @@ app.get("/",(req,res)=>{
 })
 
 app.post("/shayri",async(req,res)=>{
-     const {message, count = 4} = req.body;
-     const prompt = `You should act like a shayri generator and you have to generate ${count} shayri(s) for the word - "${message}".`;
-     const response = await openai.chat.completions.create({
-        model:model,
-        messages:[{role:'system', content: prompt}, {role:'user', content:`${message}`}]
-     });
-     const shayris = [];
-        for (let i = 0; i < count; i++) {
-            if (response.choices[i]) {
-                shayris.push(response.choices[i].message.content);
-            } else {
-                break; 
-            }
-        }
-     res.json({shayris})
+    const {message} = req.body;
+    const prompt = `You should act like a shayri generator and you have to generate shayri for the word - "${message}".`;
+    const response = await openai.chat.completions.create({
+       model:model,
+       messages:[{role:'system', content: prompt}, {role:'user', content:`${message}`}]
+    });
+    res.json({response});
+});
+
+
+app.post("/joke",async(req,res)=>{
+    const {message} = req.body;
+    const prompt = `You should act like a joke generator and you have to generate joke for the word - "${message}".`;
+    const response = await openai.chat.completions.create({
+       model:model,
+       messages:[{role:'system', content: prompt}, {role:'user', content:`${message}`}]
+    });
+    res.json({response});
+});
+
+app.post("/quotes",async(req,res)=>{
+    const {message} = req.body;
+    const prompt = `You should act like a quotes generator and you have to generate quotes for the word - "${message}".`;
+    const response = await openai.chat.completions.create({
+       model:model,
+       messages:[{role:'system', content: prompt}, {role:'user', content:`${message}`}]
+    });
+    res.json({response});
+});
+
+app.post("/story",async(req,res)=>{
+    const {message} = req.body;
+    const prompt = `You should act like a story generator and you have to generate story for the word - "${message}".`;
+    const response = await openai.chat.completions.create({
+       model:model,
+       messages:[{role:'system', content: prompt}, {role:'user', content:`${message}`}]
+    });
+    res.json({response});
 });
 
 app.listen(4000,()=>{
